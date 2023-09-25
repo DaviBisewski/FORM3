@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Bhaskara</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Bhaskara_Akaria.jpg" type="image/x-icon">
+    <script>
+
+        function click_calcular() {
+            let valorA = document.getElementById("ValorA").value
+            let valorB = document.getElementById("ValorB").value
+            let valorC = document.getElementById("ValorC").value
+            let delta = (Number(valorB) ** 2) - 4 * (Number(valorA) * Number(valorC))
+
+            if (valorA == "") {
+                alert(`Informe o valor A`);
+            }
+            else if (valorB == "") {
+                alert(`Informe o valor B`);
+            }
+            else if (valorC == "") {
+                alert(`Informe o valor C`)
+            }
+            
+            else {
+                if(delta > 0){
+                let x1 = (-(valorB) + Math.sqrt(delta)) / (2 * (valorA))
+                let x2 = (-(valorB) - Math.sqrt(delta)) / (2 * (valorA))
+                document.getElementById("BHASKARA").innerHTML= `<h2> X' = ${x1} </h2>`;
+                document.getElementById("BHASKARA1").innerHTML= `<h2> X'' = ${x2} </h2>`;
+                }
+                else if ( delta == 0) {
+                    let x2 = (-(valorB) - Math.sqrt(delta)) / (2 * (valorA))
+                document.getElementById("BHASKARA").innerHTML= `<h2> X = ${x2} </h2>`;
+
+                }
+                else{
+                    alert(`Valores Inválidos!`)
+                }
+            }
+        }
+
+        function click_limpar() {
+            document.getElementById("ValorA").value = "";
+            document.getElementById("ValorB").value = "";
+            document.getElementById("ValorC").value = "";
+            document.getElementById("BHASKARA").innerHTML= "";
+            document.getElementById("BHASKARA1").innerHTML= "";
+        } 
+    </script>
+
+</head>
+
+<body>
+    <div class="form">
+        <h1>Calculadora de Bhaskara</h1>
+        <form>
+            <div>
+                <label for="ValorA">Informe o valor A:</label>
+                <input type="number" id="ValorA">
+            </div>
+            <br>
+            <div>
+                <label for="ValorB">Informe o valor B:</label>
+                <input type="number" id="ValorB">
+            </div>
+            <br>
+            <div>
+                <label for="ValorC">Informe o valor C:</label>
+                <input type="number" id="ValorC">
+            </div>
+            <br>
+            <div id="BHASKARA"></div>
+            <br>
+            <div id="BHASKARA1"></div>
+            <br>
+            <div>
+                <input type="button" value="Calcular Bhaskara" onclick="click_calcular()">
+                <input type="button" value="Limpar" onclick="click_limpar()">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
